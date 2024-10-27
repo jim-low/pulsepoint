@@ -19,7 +19,7 @@ const tabsList = [
 ]
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true);
   const location = useLocation();
 
   return (

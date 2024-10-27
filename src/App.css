@@ -1,0 +1,17 @@
+#pulsepoint {
+  @apply w-[100vw] h-[100vh];
+  @apply bg-[#72ACCB];
+  @apply relative;
+
+  &::before {
+    @apply w-[100vw] h-[100vh];
+    @apply bg-white;
+    @apply absolute;
+
+    content: '';
+    top: 0;
+    left: 0;
+    clip-path: polygon(80% 0, 100% 0, 100% 100%, 40% 100%);
+    box-shadow: -5px -5px 5px black;
+  }
+}

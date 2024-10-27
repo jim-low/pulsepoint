@@ -1,12 +1,14 @@
 import { Box, Flex, ScrollArea, Select, Text, TextField } from '@radix-ui/themes';
-import doctorsInformation from '../../data/doctor-information.json';
 import DoctorCard from '../../components/DoctorCard';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRecoilState } from 'recoil';
+import { doctorsListState } from '../../states';
 
 const DoctorsPage = () => {
+  const [doctorsList] = useRecoilState(doctorsListState);
   const specialties: string[] = [];
-  doctorsInformation.forEach(d => {
+  doctorsList.forEach(d => {
     if (!specialties.includes(d.Speciality)) {
       specialties.push(d.Speciality);
     }
@@ -21,7 +23,7 @@ const DoctorsPage = () => {
             {
               specialties.map(s => {
                 return (
-                  <Select.Item value={s.toLowerCase()}>{s}</Select.Item>
+                  <Select.Item key={s.toLowerCase()} value={s.toLowerCase()}>{s}</Select.Item>
                 )
               })
             }
@@ -43,7 +45,7 @@ const DoctorsPage = () => {
         <Flex direction={'column'} className='h-[70vh]'>
           {
             specialties.map(specialty => {
-              const doctors = doctorsInformation.filter(doctor => doctor.Speciality === specialty);
+              const doctors = doctorsList.filter(doctor => doctor.Speciality === specialty);
 
               return (
                 <Box key={specialty} className='w-full block mb-4'>

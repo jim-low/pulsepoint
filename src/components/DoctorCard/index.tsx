@@ -1,18 +1,18 @@
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { Button } from "antd";
-
-interface IDoctor {
-  Age: number;
-  Contact: string;
-  Gender: string;
-  Location: string;
-  Name: string;
-  Qualification: string;
-  Speciality: string;
-}
+import { IDoctor, selectedDoctorState } from "../../states";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
   const randomDoctorImage = `/images/doctors/doctor${Math.ceil(Math.random() * 18)}.jpeg`;
+  const [, setSelectedDoctor] = useRecoilState(selectedDoctorState);
+  const navigate = useNavigate();
+
+  function scheduleAppointment() {
+    setSelectedDoctor({ ...doctor, image: randomDoctorImage });
+    navigate('/appointments-set');
+  }
 
   return (
     <Flex align='end' className="doctor-card w-[500px] border-black border-8 border-double p-4 rounded-lg" gap={'3'}>
@@ -33,7 +33,7 @@ const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
           </Box>
         </Flex>
         <Box>
-          <Button type="primary">
+          <Button type="primary" onClick={scheduleAppointment}>
             <p className="font-semibold">
               Schedule Appointment
             </p>

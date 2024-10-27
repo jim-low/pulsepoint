@@ -55,7 +55,7 @@ const Header = () => {
             align={'center'}
             gap="3"
           >
-            <Text as="p" className="font-semibold text-lg">{USER_INFO.name}</Text>
+            <Text as="p" className="font-semibold text-lg">{USER_INFO.fullName}</Text>
             <Box className="bg-[#56AA90] rounded-[50%] p-1">
               <Avatar src={IMAGES.USER_AVATAR} fallback={"A"} radius="full" />
             </Box>

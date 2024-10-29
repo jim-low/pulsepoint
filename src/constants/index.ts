@@ -1,5 +1,5 @@
 import PULSEPOINT_LOGO from '../images/pulsepoint-logo.png';
-import { AppointmentTypes, IUser } from '../states';
+import { IUser } from '../states';
 
 export const IMAGES = {
   PULSEPOINT_LOGO: PULSEPOINT_LOGO,

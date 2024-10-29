@@ -13,14 +13,14 @@ const AppointmentPage = () => {
 
   function filterAppointmentTiming(appointment: IAppointment) {
     const today = dayjs();
-    const appointmentDateTime = appointment.dateTime;
+    const appointmentDate = appointment.date;
 
     if (section === 'upcoming') {
-      return today.isBefore(appointmentDateTime);
+      return today.isBefore(appointmentDate);
     }
 
     if (section === 'finished') {
-      return today.isAfter(appointmentDateTime);
+      return today.isAfter(appointmentDate);
     }
 
     // section === 'all'
@@ -48,7 +48,7 @@ const AppointmentPage = () => {
             .filter(filterAppointmentTiming)
             .map(appointment => {
               return (
-                <AppointmentCard key={appointment.dateTime.toISOString()} appointment={appointment} />
+                <AppointmentCard key={appointment.time?.toISOString()} appointment={appointment} />
               )
             })
           }

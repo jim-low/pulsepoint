@@ -4,7 +4,7 @@ import { IDoctor, selectedDoctorState } from "../../states";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
-const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
+const DoctorCard = ({ doctor, isAppointment = false }: { doctor: IDoctor & { image?: string }, isAppointment?: boolean }) => {
   const randomDoctorImage = `/images/doctors/doctor${Math.ceil(Math.random() * 18)}.jpeg`;
   const [, setSelectedDoctor] = useRecoilState(selectedDoctorState);
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
     <Flex align='end' className="doctor-card w-[500px] border-black border-8 border-double p-4 rounded-lg" gap={'3'}>
       <Box className="w-[60%] h-full">
         <img
-          src={randomDoctorImage}
+          src={doctor.image || randomDoctorImage}
           alt={doctor.Name}
           className="w-full rounded-lg border-black border-2 border-solid"
         />
@@ -32,13 +32,16 @@ const DoctorCard = ({ doctor }: { doctor: IDoctor }) => {
             <Text as="p">Location: {doctor.Location}</Text>
           </Box>
         </Flex>
-        <Box>
-          <Button type="primary" onClick={scheduleAppointment}>
-            <p className="font-semibold">
-              Schedule Appointment
-            </p>
-          </Button>
-        </Box>
+        {
+          isAppointment &&
+            <Box>
+              <Button type="primary" onClick={scheduleAppointment}>
+                <p className="font-semibold">
+                  Schedule Appointment
+                </p>
+              </Button>
+            </Box>
+        }
       </Flex>
     </Flex>
   )

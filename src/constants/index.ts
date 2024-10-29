@@ -1,5 +1,5 @@
 import PULSEPOINT_LOGO from '../images/pulsepoint-logo.png';
-import { IUser } from '../states';
+import { AppointmentTypes, IUser } from '../states';
 
 export const IMAGES = {
   PULSEPOINT_LOGO: PULSEPOINT_LOGO,
@@ -10,4 +10,9 @@ export const USER_INFO: IUser = {
   fullName: 'Lee Sze Jie',
   nric: '000225-14-0987',
   contactNumber: '012-345-6789'
+}
+
+export const APPOINTMENT_TYPES = {
+  'teleconsultation': 'TeleConsultation',
+  'clinic-visit': 'Clinic Visit',
 }

@@ -54,7 +54,7 @@ const DoctorsPage = () => {
                     {
                       doctors.map((doctor, i) => {
                         return (
-                          <DoctorCard key={i} doctor={doctor} />
+                          <DoctorCard key={i} doctor={doctor} isAppointment />
                         )
                       })
                     }

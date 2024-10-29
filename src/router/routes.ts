@@ -22,6 +22,16 @@ const routes = [
 		path: '/appointments-set',
 		element: withLazyComponent(React.lazy(() => import('../pages/AppointmentSetting'))),
 	},
+	{
+		name: 'Confirm Appointment',
+		path: '/appointment-confirm',
+		element: withLazyComponent(React.lazy(() => import('../pages/AppointmentConfirm'))),
+	},
+	{
+		name: 'Appointment Has Set',
+		path: '/appointment-has-set',
+		element: withLazyComponent(React.lazy(() => import('../pages/AppointmentHasSet'))),
+	},
 ]
 
 export default routes;
